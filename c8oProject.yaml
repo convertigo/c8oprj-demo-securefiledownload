@@ -1,10 +1,10 @@
 ↑convertigo: 8.4.0.m006
 ↓SecureFileDownloadDemo [core.Project]: 
-  comment: Convertigo NGX builder Project
+  comment: 'Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.'
   contextTimeout: 59
   corsOrigin: http://localhost:43726
   httpSessionTimeout: 60
-  version: 8.4.0.1
+  version: 8.4.0.2
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓DemoLogin [sequences.GenericSequence]: 🗏 sequences/DemoLogin.yaml
   ↓DemoLogout [sequences.GenericSequence]: 🗏 sequences/DemoLogout.yaml
@@ -14,7 +14,17 @@
   ↓project1 [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_4_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_4_0_ngx.zip
   ↓Application [core.MobileApplication]: 
-    comment: Describes the mobile application global properties
+    applicationDescription: 'Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.'
+    comment: |
+      'Application de démonstration du téléchargement sécurisé de fichiers avec .httpignore et une séquence authentifiée appelée en .bin. La connexion proposée est pédagogique, sans mot de passe.
+      
+      #### Aperçu de l’application
+      
+      ![Sans connexion](doc/01-non-connecte.png)
+      
+      ![Après connexion](doc/02-connecte.png)
+      
+      ![Téléchargement du fichier](doc/03-telechargement.png)'
     splashRemoveMode: beforeUpdate
     ↓Android [mobileplatforms.Android]: 
       comment: Android platform

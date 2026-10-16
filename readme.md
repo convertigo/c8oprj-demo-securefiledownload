@@ -1,9 +1,9 @@
 
 
 
-# template_ngxBuilderIonic
+# SecureFileDownloadDemo
 
-Convertigo NGX builder Project
+Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.
 
 
 For more technical informations : [documentation](./project.md)
@@ -27,28 +27,36 @@ For more technical informations : [documentation](./project.md)
      <tr><td>To contribute</td><td>
 
      ```
-     template_ngxBuilderIonic=git@github.com:convertigo/c8oprj-template-ngx-builder.git:branch=8.4.0
+     SecureFileDownloadDemo=https://github.com/convertigo/c8oprj-demo-securefiledownload.git:branch=master
      ```
      </td></tr>
      <tr><td>To simply use</td><td>
 
      ```
-     template_ngxBuilderIonic=git@github.com:convertigo/c8oprj-template-ngx-builder/archive/8.4.0.zip
+     SecureFileDownloadDemo=https://github.com/convertigo/c8oprj-demo-securefiledownload/archive/master.zip
      ```
      </td></tr>
     </table>
-3. Click the `Finish` button. This will automatically import the __template_ngxBuilderIonic__ project
+3. Click the `Finish` button. This will automatically import the __SecureFileDownloadDemo__ project
 
 
 ## Mobile Application
 
-Describes the mobile application global properties
+Application de démonstration du téléchargement sécurisé de fichiers avec .httpignore et une séquence authentifiée appelée en .bin. La connexion proposée est pédagogique, sans mot de passe.
+
+#### Aperçu de l’application
+
+![Sans connexion](doc/01-non-connecte.png)
+
+![Après connexion](doc/02-connecte.png)
+
+![Téléchargement du fichier](doc/03-telechargement.png)
 
 ### Pages
 
 #### Page
 
-Default home page
+Page de démonstration du téléchargement sécurisé : affiche l’état connecté/non connecté et propose Login, Logout et Download file. La page reste accessible sans connexion pour permettre le login ; seul le téléchargement est protégé côté serveur.
 
 
 

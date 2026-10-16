@@ -1,3 +1,7 @@
+comment: |
+  'Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.
+  
+  L’état local sessionAuthenticated pilote l’affichage et l’activation des boutons ; il est initialisé par DemoSessionStatus à l’entrée de page et actualisé après DemoLogin/DemoLogout. La protection effective du téléchargement est assurée côté serveur par authenticatedContextRequired=true sur GetSecuredFile.'
 componentScriptContent: 
   - xmlizable: 
     - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
@@ -61,7 +65,7 @@ tplProjectName: mobilebuilder_tpl_8_4_0_ngx
 ↓Menu [ngx.components.UIDynamicMenu-1500890597895]: 🗏 mobileMenus/Menu.yaml
 ↓Page [ngx.components.PageComponent-1500538678074]: 🗏 mobilePages/Page.yaml
 ↓Style [ngx.components.UIStyle-1491635462437]: 
-  comment: You can add some global application styles here
+  comment: Styles globaux de l’application NGX issus du modèle ; les styles spécifiques au bouton de téléchargement sont définis sur la page.
   styleContent: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
@@ -194,7 +198,7 @@ tplProjectName: mobilebuilder_tpl_8_4_0_ngx
           '
 ↓AppEvent [ngx.components.UIAppEvent-1770984391407]: 
   appEvent: onAppInit
-  comment: Initializes global app state when the application starts
+  comment: Initialisation du thème et de la langue héritée du modèle NGX. La session de démonstration est vérifiée séparément par l’événement RefreshSessionStatus de la page.
   ↓GetTheme [ngx.components.UIDynamicAction-1770984391410]: 
     beanData: |
       '{
@@ -213,10 +217,10 @@ tplProjectName: mobilebuilder_tpl_8_4_0_ngx
       }'
     comment: Restores and applies the persisted language preference
 ↓AppGuard [ngx.components.UIAppGuard-1770993550818]: 
-  comment: Central guard used to validate page navigation
+  comment: Garde de navigation héritée du modèle, sans page protégée configurée dans cette démonstration. Le téléchargement est protégé par la séquence GetSecuredFile côté serveur.
   ↓AuthorizePages [ngx.components.UIDynamicAction-1770993550817]: 
     beanData: '{"ionBean":"AuthorizePagesAction"}'
-    comment: Applies page authorization rules before route access
+    comment: Autorise la navigation par défaut avec une liste de pages protégées vide. Cette action ne protège pas les fichiers ; GetSecuredFile exige une session authentifiée.
 ↓LightTheme [ngx.components.UIStyle-1771437380143]: 
   comment: This will define the light theme for the application. This will be selected if the device is in light mode.
   styleContent: 

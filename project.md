@@ -1,7 +1,7 @@
 
 # ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/project_color_16x16.png?raw=true "Project") SecureFileDownloadDemo
 
-Convertigo NGX builder Project
+Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.
 
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>
 
@@ -112,13 +112,21 @@ Initialise exclusivement les ressources statiques de la démonstration : .httpig
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/mobileapplication_color_16x16.png?raw=true "MobileApplication") Application
 
-Describes the mobile application global properties
+Application de démonstration du téléchargement sécurisé de fichiers avec .httpignore et une séquence authentifiée appelée en .bin. La connexion proposée est pédagogique, sans mot de passe.
+
+#### Aperçu de l’application
+
+![Sans connexion](doc/01-non-connecte.png)
+
+![Après connexion](doc/02-connecte.png)
+
+![Téléchargement du fichier](doc/03-telechargement.png)
 
 <details><summary><span style="color:DarkGoldenRod"><i>Pages</i></span></summary><blockquote><p>
 
 
 ### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/pagecomponent_color_16x16.png?raw=true "PageComponent") Page
 
-Default home page
+Page de démonstration du téléchargement sécurisé : affiche l’état connecté/non connecté et propose Login, Logout et Download file. La page reste accessible sans connexion pour permettre le login ; seul le téléchargement est protégé côté serveur.
 </p></blockquote></details>
 </p></blockquote></details>
