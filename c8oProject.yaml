@@ -1,10 +1,10 @@
 ↑convertigo: 8.4.0.m006
 ↓SecureFileDownloadDemo [core.Project]: 
-  comment: 'Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.'
+  comment: 'Convertigo demo showing how to download a protected file: .httpignore excludes secured/ from direct HTTP access, while the GetSecuredFile sequence, invoked through .bin, requires an authenticated session and returns secure-demo.txt as an attachment. The NGX interface provides Login, Logout and Download file buttons and displays the session status. Passwordless login is for demonstration purposes only and must be replaced before production use.'
   contextTimeout: 59
   corsOrigin: http://localhost:43726
   httpSessionTimeout: 60
-  version: 8.4.0.2
+  version: 8.4.0.3
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓DemoLogin [sequences.GenericSequence]: 🗏 sequences/DemoLogin.yaml
   ↓DemoLogout [sequences.GenericSequence]: 🗏 sequences/DemoLogout.yaml
@@ -14,17 +14,17 @@
   ↓project1 [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_4_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_4_0_ngx.zip
   ↓Application [core.MobileApplication]: 
-    applicationDescription: 'Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.'
+    applicationDescription: 'Convertigo demo showing how to download a protected file: .httpignore excludes secured/ from direct HTTP access, while the GetSecuredFile sequence, invoked through .bin, requires an authenticated session and returns secure-demo.txt as an attachment. The NGX interface provides Login, Logout and Download file buttons and displays the session status. Passwordless login is for demonstration purposes only and must be replaced before production use.'
     comment: |
-      'Application de démonstration du téléchargement sécurisé de fichiers avec .httpignore et une séquence authentifiée appelée en .bin. La connexion proposée est pédagogique, sans mot de passe.
+      'Demo application showing secure file downloads with .httpignore and an authenticated sequence invoked through .bin. Passwordless login is provided for demonstration purposes only.
       
-      #### Aperçu de l’application
+      #### Application screenshots
       
-      ![Sans connexion](doc/01-non-connecte.png)
+      ![Logged out](doc/01-non-connecte.png)
       
-      ![Après connexion](doc/02-connecte.png)
+      ![Logged in](doc/02-connecte.png)
       
-      ![Téléchargement du fichier](doc/03-telechargement.png)'
+      ![File download](doc/03-telechargement.png)'
     splashRemoveMode: beforeUpdate
     ↓Android [mobileplatforms.Android]: 
       comment: Android platform

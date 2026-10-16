@@ -1,7 +1,7 @@
 accessibility: Hidden
-comment: 'DÉMONSTRATION UNIQUEMENT : authentifie le nom fourni sans mot de passe. À ne jamais utiliser en production.'
+comment: 'DEMO ONLY: authenticates the supplied user name without a password. Never use this login mechanism in production.'
 ↓SetDemoAuthenticatedUser [steps.SetAuthenticatedUserStep-1792152904628]: 
-  comment: 'DÉMONSTRATION UNIQUEMENT : place user dans la session comme utilisateur authentifié.'
+  comment: 'DEMO ONLY: sets user as the authenticated user of the current HTTP session.'
   userid: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -9,6 +9,6 @@ comment: 'DÉMONSTRATION UNIQUEMENT : authentifie le nom fourni sans mot de pass
         - ↑mode: JS
         - →→: user
 ↓user [variables.RequestableVariable-1792152904605]: 
-  comment: 'Aucun mot de passe : démonstration pédagogique uniquement.'
-  description: Identifiant libre de démonstration.
+  comment: 'No password verification: for demonstration purposes only.'
+  description: User name for the passwordless demo login.
   required: true

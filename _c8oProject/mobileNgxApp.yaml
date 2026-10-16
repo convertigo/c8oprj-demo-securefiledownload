@@ -1,7 +1,7 @@
 comment: |
-  'Démonstration Convertigo du téléchargement d’un fichier protégé : le répertoire secured/ est exclu de la publication HTTP directe par .httpignore ; la séquence GetSecuredFile, appelée en .bin, exige une session authentifiée et renvoie secure-demo.txt en pièce jointe. L’interface NGX propose Login, Logout et Download file et affiche l’état de session. Le login sans mot de passe est réservé à cette démonstration et doit être remplacé en production.
+  'Convertigo demo showing how to download a protected file: .httpignore excludes secured/ from direct HTTP access, while the GetSecuredFile sequence, invoked through .bin, requires an authenticated session and returns secure-demo.txt as an attachment. The NGX interface provides Login, Logout and Download file buttons and displays the session status. Passwordless login is for demonstration purposes only and must be replaced before production use.
   
-  L’état local sessionAuthenticated pilote l’affichage et l’activation des boutons ; il est initialisé par DemoSessionStatus à l’entrée de page et actualisé après DemoLogin/DemoLogout. La protection effective du téléchargement est assurée côté serveur par authenticatedContextRequired=true sur GetSecuredFile.'
+  The local sessionAuthenticated flag controls the status label and button availability. DemoSessionStatus initializes it when the page is entered, and DemoLogin/DemoLogout update it. Download access is enforced on the server by authenticatedContextRequired=true on GetSecuredFile.'
 componentScriptContent: 
   - xmlizable: 
     - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
@@ -65,7 +65,7 @@ tplProjectName: mobilebuilder_tpl_8_4_0_ngx
 ↓Menu [ngx.components.UIDynamicMenu-1500890597895]: 🗏 mobileMenus/Menu.yaml
 ↓Page [ngx.components.PageComponent-1500538678074]: 🗏 mobilePages/Page.yaml
 ↓Style [ngx.components.UIStyle-1491635462437]: 
-  comment: Styles globaux de l’application NGX issus du modèle ; les styles spécifiques au bouton de téléchargement sont définis sur la page.
+  comment: Global NGX application styles inherited from the template. Download button styles are defined on the page.
   styleContent: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
@@ -198,7 +198,7 @@ tplProjectName: mobilebuilder_tpl_8_4_0_ngx
           '
 ↓AppEvent [ngx.components.UIAppEvent-1770984391407]: 
   appEvent: onAppInit
-  comment: Initialisation du thème et de la langue héritée du modèle NGX. La session de démonstration est vérifiée séparément par l’événement RefreshSessionStatus de la page.
+  comment: Initializes theme and language settings inherited from the NGX template. RefreshSessionStatus on the page checks the demo session separately.
   ↓GetTheme [ngx.components.UIDynamicAction-1770984391410]: 
     beanData: |
       '{
@@ -211,16 +211,16 @@ tplProjectName: mobilebuilder_tpl_8_4_0_ngx
     beanData: |
       '{
        "ionBean": "SetLanguageAction",
-       "language": "script:null",
+       "language": "plain:en",
        "storageKey": "plain:c8o-lang",
        "globalProperty": "plain:currentLanguage"
       }'
-    comment: Restores and applies the persisted language preference
+    comment: Initializes the interface in English. The toolbar language selector remains available.
 ↓AppGuard [ngx.components.UIAppGuard-1770993550818]: 
-  comment: Garde de navigation héritée du modèle, sans page protégée configurée dans cette démonstration. Le téléchargement est protégé par la séquence GetSecuredFile côté serveur.
+  comment: Navigation guard inherited from the template, with no protected pages configured for this demo. The GetSecuredFile sequence enforces download authentication on the server.
   ↓AuthorizePages [ngx.components.UIDynamicAction-1770993550817]: 
     beanData: '{"ionBean":"AuthorizePagesAction"}'
-    comment: Autorise la navigation par défaut avec une liste de pages protégées vide. Cette action ne protège pas les fichiers ; GetSecuredFile exige une session authentifiée.
+    comment: Allows navigation by default with an empty protected-page list. This action does not protect files; GetSecuredFile requires an authenticated session.
 ↓LightTheme [ngx.components.UIStyle-1771437380143]: 
   comment: This will define the light theme for the application. This will be selected if the device is in light mode.
   styleContent: 

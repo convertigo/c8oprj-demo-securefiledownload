@@ -1,5 +1,5 @@
 ↑isRoot: true
-comment: Default home page
+comment: 'Secure file download demo page: shows whether the user is logged in and provides Login, Logout and Download file buttons. The page remains accessible to guests so they can log in; the server protects the download sequence.'
 icon: home
 preloadPriority: high
 scriptContent: 
@@ -20,11 +20,11 @@ segment: home
 title: Home
 ↓Header [ngx.components.UIDynamicElement-1491634212350]: 
   beanData: '{"ionBean":"Header"}'
-  comment: Top page header container
+  comment: Demo page header containing the title and presentation controls inherited from the NGX template.
   tagName: ion-header
   ↓ToolBar [ngx.components.UIDynamicElement-1491634231108]: 
     beanData: '{"ionBean":"ToolBar"}'
-    comment: Main toolbar displayed in the header
+    comment: Demo toolbar. Theme and language controls are independent of file access control.
     tagName: ion-toolbar
     ↓ButtonSet1 [ngx.components.UIDynamicElement-1588171103814]: 
       beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
@@ -40,15 +40,14 @@ title: Home
         tagName: ion-menu-button
     ↓BarTitle [ngx.components.UIDynamicElement-1491634265317]: 
       beanData: '{"ionBean":"BarTitle"}'
-      comment: Title container displayed in the toolbar
+      comment: Title container for the secure file download demo page.
       tagName: ion-title
       ↓Text [ngx.components.UIText-1491634275121]: 
-        comment: Translated page title key
-        i18n: true
+        comment: English page title for the secure file download demo.
         textValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: plain:Home
+            - MobileSmartSourceType: plain:Secure file download
     ↓ButtonSet2 [ngx.components.UIDynamicElement-1588170811054]: 
       beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:end"}'
       comment: Right toolbar button group
@@ -150,78 +149,76 @@ title: Home
           tagName: ion-select-option
           ↓Text [ngx.components.UIText-1770984415423]: 
             comment: Translation key for the English option label
-            i18n: true
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_English
+                - MobileSmartSourceType: plain:English
         ↓LangFR [ngx.components.UIDynamicElement-1770984415426]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:fr"}'
           comment: French language option
           tagName: ion-select-option
           ↓Text [ngx.components.UIText-1770984415429]: 
             comment: Translation key for the French option label
-            i18n: true
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_French
+                - MobileSmartSourceType: plain:French
         ↓LangIT [ngx.components.UIDynamicElement-1770984415432]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:it"}'
           comment: Italian language option
           tagName: ion-select-option
           ↓Text [ngx.components.UIText-1770984415435]: 
             comment: Translation key for the Italian option label
-            i18n: true
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_Italian
+                - MobileSmartSourceType: plain:Italian
         ↓LangES [ngx.components.UIDynamicElement-1770984415438]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:es"}'
           comment: Spanish language option
           tagName: ion-select-option
           ↓Text [ngx.components.UIText-1770984415441]: 
             comment: Translation key for the Spanish option label
-            i18n: true
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_Spanish
+                - MobileSmartSourceType: plain:Spanish
 ↓Content [ngx.components.UIDynamicElement-1489674805352]: 
   beanData: '{"ionBean":"Content"}'
-  comment: Main scrollable content area for the home page
+  comment: 'Demo content: login workflow, session status and protected file download.'
   tagName: ion-content
   ↓SecureFileActionsCard [ngx.components.UIDynamicElement-1792154653192]: 
     beanData: '{"ionBean":"Card"}'
-    comment: Interface NGX de démonstration pour ouvrir une session, la fermer et télécharger le fichier protégé.
+    comment: Demonstrates Login → download secure-demo.txt through GetSecuredFile invoked as .bin → Logout. The .httpignore file blocks direct static HTTP access to secured/.
     tagName: ion-card
     ↓CardHeader [ngx.components.UIDynamicElement-1792154653194]: 
       beanData: '{"ionBean":"CardHeader"}'
-      comment: Titre de la démonstration.
+      comment: Header introducing the secure file download demo.
       tagName: ion-card-header
       ↓CardTitle [ngx.components.UIDynamicElement-1792154653196]: 
         beanData: '{"ionBean":"CardTitle"}'
-        comment: Titre de la carte.
+        comment: Title of the secure file download demo.
         tagName: ion-card-title
         ↓Text [ngx.components.UIText-1792154653198]: 
+          comment: Secure file download heading displayed above the demo workflow.
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: plain:Téléchargement sécurisé
+              - MobileSmartSourceType: plain:Secure file download
     ↓CardContent [ngx.components.UIDynamicElement-1792154653200]: 
       beanData: '{"ionBean":"CardContent"}'
-      comment: Actions de démonstration du fichier sécurisé.
+      comment: Groups the instructions, session buttons, .bin download and login status indicator.
       tagName: ion-card-content
       ↓Description [ngx.components.UIDynamicElement-1792154653202]: 
         beanData: '{"ionBean":"Paragraph"}'
-        comment: Explique le scénario de démonstration.
+        comment: 'Explains the demo workflow: log in, download the protected file, then log out.'
         tagName: p
         ↓Text [ngx.components.UIText-1792154653204]: 
+          comment: Instructions for testing the workflow with the demo account.
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: plain:Connectez-vous avec le compte de démonstration, téléchargez le fichier, puis fermez la session.
+              - MobileSmartSourceType: plain:Log in with the demo account, download the protected file, then log out.
       ↓LoginButton [ngx.components.UIDynamicElement-1792154653206]: 
         beanData: |
           '{
@@ -230,20 +227,22 @@ title: Home
            "IonColor": "plain:primary",
            "IonExpand": "plain:block"
           }'
-        comment: Ouvre la session de démonstration avec l’utilisateur demo-user.
+        comment: Starts a passwordless demo session for demo-user through DemoLogin. Disabled when sessionAuthenticated is true. For demonstration purposes only.
         identifier: loginButton
         tagName: ion-button
         ↓Text [ngx.components.UIText-1792154653208]: 
+          comment: Label of the demo login button.
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: plain:Login
         ↓LoginClick [ngx.components.UIControlEvent-1792154653210]: 
-          comment: Appelle la séquence DemoLogin.
+          comment: Calls DemoLogin; its child action then updates the local login state.
           ↓CallDemoLogin [ngx.components.UIDynamicAction-1792154653452]: 
             beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:SecureFileDownloadDemo.DemoLogin"}'
+            comment: Calls SecureFileDownloadDemo.DemoLogin with user=demo-user. The sequence establishes a demo HTTP session without checking a password.
             ↓user [ngx.components.UIControlVariable-1792154653702]: 
-              comment: Identifiant fixe de démonstration.
+              comment: Fixed demo-user identifier sent to DemoLogin; no password is checked.
               varValue: 
                 - xmlizable: 
                   - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
@@ -255,7 +254,7 @@ title: Home
                  "Property": "plain:sessionAuthenticated",
                  "Value": "script:true"
                 }'
-              comment: Met immédiatement l’interface à l’état connecté après le succès de DemoLogin.
+              comment: After DemoLogin returns, sets sessionAuthenticated to true to update the status label and all three buttons.
       ↓LogoutButton [ngx.components.UIDynamicElement-1792154653704]: 
         beanData: |
           '{
@@ -264,16 +263,17 @@ title: Home
            "IonColor": "plain:medium",
            "IonExpand": "plain:block"
           }'
-        comment: Ferme la session de démonstration.
+        comment: Calls DemoLogout to remove the authenticated user and terminate the HTTP session. Disabled unless sessionAuthenticated is true.
         identifier: logoutButton
         tagName: ion-button
         ↓Text [ngx.components.UIText-1792154653706]: 
+          comment: Label of the logout button.
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: plain:Logout
         ↓LogoutClick [ngx.components.UIControlEvent-1792154653708]: 
-          comment: Appelle la séquence DemoLogout.
+          comment: Calls DemoLogout; its child action then returns the interface to the logged-out state.
           ↓CallDemoLogout [ngx.components.UIDynamicAction-1792154653710]: 
             beanData: |
               '{
@@ -281,6 +281,7 @@ title: Home
                "requestable": "plain:SecureFileDownloadDemo.DemoLogout",
                "noAutoLogin": "plain:true"
               }'
+            comment: Calls SecureFileDownloadDemo.DemoLogout with Disable auto login=true to prevent SDK automatic login when the session is terminated.
             ↓SetSessionUnauthenticated [ngx.components.UIDynamicAction-1792157401540]: 
               beanData: |
                 '{
@@ -288,7 +289,7 @@ title: Home
                  "Property": "plain:sessionAuthenticated",
                  "Value": "script:false"
                 }'
-              comment: Met immédiatement l’interface à l’état non connecté après le succès de DemoLogout.
+              comment: 'After DemoLogout returns, sets sessionAuthenticated to false: Login becomes enabled, while Logout and Download file become disabled.'
       ↓DownloadFileButton [ngx.components.UIDynamicElement-1792154653712]: 
         beanData: |
           '{
@@ -298,10 +299,11 @@ title: Home
            "LinkUrl": "script:this.local?.sessionAuthenticated ? ''http:\/\/localhost:18080\/convertigo\/projects\/SecureFileDownloadDemo\/.bin?__sequence=GetSecuredFile&file=secure-demo.txt'' : undefined",
            "LinkTarget": "plain:_self"
           }'
-        comment: Télécharge le fichier protégé uniquement pour une session authentifiée.
+        comment: Opens GetSecuredFile through .bin with file=secure-demo.txt using the browser's HTTP session. Disabled and without a URL while logged out. The URL targets the local engine at localhost:18080 and must be adapted for deployment. Server-side authenticatedContextRequired protection remains mandatory.
         identifier: downloadFileButton
         tagName: ion-button
         ↓Text [ngx.components.UIText-1792154653714]: 
+          comment: Label of the button that downloads the protected file through the .bin sequence.
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
@@ -312,24 +314,26 @@ title: Home
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: plain:secure-download-button
+          comment: Dedicated CSS class ensuring that clicks on the label reach the download button.
         ↓DisableWhenNotAuthenticated [ngx.components.UIAttribute-1792157402118]: 
           attrName: '[disabled]'
           attrValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: script:!this.local?.sessionAuthenticated
-          comment: Supprime toute interaction avec le téléchargement tant que la session n’est pas authentifiée.
+          comment: Binds disabled to the absence of local authentication to avoid a .bin request and a download named bin while logged out. This UI control does not replace server-side authentication.
       ↓SessionStatus [ngx.components.UIDynamicElement-1792157401038]: 
         beanData: '{"ionBean":"TextItem","IonColor":"plain:primary"}'
-        comment: Affiche l’état de la session courante.
+        comment: Displays the logged-in/logged-out state from sessionAuthenticated, initialized by DemoSessionStatus and updated after Login/Logout.
         tagName: ion-text
         ↓Text [ngx.components.UIText-1792157401040]: 
-          comment: Libellé calculé depuis l’état local de la page.
+          comment: Status label derived from the page's local session state; does not display identity or sensitive information.
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: 'script:this.local?.sessionAuthenticated ? ''État de session : connecté'' : ''État de session : non connecté'''
+              - MobileSmartSourceType: 'script:this.local?.sessionAuthenticated ? ''Session status: logged in'' : ''Session status: logged out'''
 ↓SecureDownloadButtonStyle [ngx.components.UIStyle-1792156022561]: 
+  comment: Makes the download button's child content transparent to pointer events so clicking the text also activates the button.
   styleContent: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
@@ -339,7 +343,7 @@ title: Home
             pointer-events: none;
           }'
 ↓RefreshSessionStatus [ngx.components.UIPageEvent-1792157385960]: 
-  comment: Synchronise l’état de session à chaque affichage de la page.
+  comment: Calls DemoSessionStatus whenever the page is entered to restore the existing session state, including after a reload.
   viewEvent: onWillEnter
   ↓CallDemoSessionStatus [ngx.components.UIDynamicAction-1792157386202]: 
     beanData: |
@@ -349,7 +353,7 @@ title: Home
        "noLoading": "plain:true",
        "noAutoLogin": "plain:true"
       }'
-    comment: Lit l’état de la session HTTP courante.
+    comment: Calls SecureFileDownloadDemo.DemoSessionStatus without automatic login. This anonymous sequence returns only the string true/false in authenticated.
     ↓SetSessionState [ngx.components.UIDynamicAction-1792157386452]: 
       beanData: |
         '{
@@ -357,4 +361,4 @@ title: Home
          "Property": "plain:sessionAuthenticated",
          "Value": "script:out?.authenticated === ''true''"
         }'
-      comment: Mémorise l’état authentifié reçu du serveur dans l’état local de la page.
+      comment: Converts authenticated === 'true' to a boolean and stores it in sessionAuthenticated to control the status label and buttons.

@@ -1,7 +1,7 @@
 accessibility: Private
-comment: 'Initialise exclusivement les ressources statiques de la démonstration : .httpignore, secured/ et secure-demo.txt.'
+comment: 'Initializes the fixed demo resources: .httpignore, secured/ and secure-demo.txt.'
 ↓WriteSecuredDemoResources [steps.SimpleStep-1792149435488]: 
-  comment: Crée exclusivement les ressources fixes de démonstration (.httpignore, fichier protégé et page de test), sans accepter de chemin ni de contenu depuis le client.
+  comment: Creates the fixed demo resources (.httpignore, protected sample file and test page) without accepting a file path or content from the client.
   expression: |
     'var projectDirectory = new java.io.File(com.twinsoft.convertigo.engine.Engine.projectDir(context.projectName)).getCanonicalFile();
     var ignoreFile = new java.io.File(projectDirectory, ''.httpignore'').getCanonicalFile();

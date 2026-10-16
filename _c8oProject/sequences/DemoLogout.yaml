@@ -1,7 +1,7 @@
 accessibility: Hidden
 authenticatedContextRequired: true
-comment: 'Déconnexion de la démonstration : retire l’utilisateur authentifié et termine la session HTTP.'
+comment: 'Demo logout: removes the authenticated user and terminates the HTTP session.'
 ↓ClearAuthenticatedUser [steps.RemoveAuthenticatedUserStep-1792149324267]: 
-  comment: Retire l’utilisateur authentifié de la session.
+  comment: Removes the authenticated user from the session.
 ↓EndHttpSession [steps.RemoveSessionStep-1792149324269]: 
-  comment: Termine la session HTTP pour empêcher sa réutilisation.
+  comment: Terminates the HTTP session to prevent its reuse.

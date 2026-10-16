@@ -1,5 +1,5 @@
 beanData: '{"ionBean":"Menu"}'
-comment: Main navigation menu
+comment: Navigation menu inherited from the NGX template; provides access to the secure file download demo page.
 tagName: ion-menu
 ↓Header [ngx.components.UIDynamicElement-1500890727582]: 
   beanData: '{"ionBean":"Header"}'
@@ -15,7 +15,6 @@ tagName: ion-menu
       tagName: ion-title
       ↓Text [ngx.components.UIText-1500890755422]: 
         comment: Translated menu title text
-        i18n: true
         textValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
