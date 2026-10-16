@@ -1,0 +1,6 @@
+accessibility: Hidden
+comment: Expose uniquement l’état booléen de la session de démonstration afin que l’interface puisse synchroniser ses contrôles.
+↓Authenticated [steps.ElementStep-1792157118359]: 
+  comment: Retourne true uniquement si la session HTTP courante contient un utilisateur authentifié.
+  expression: 'context.getAuthenticatedUser() != null ? ''true'' : ''false'''
+  nodeName: authenticated

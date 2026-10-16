@@ -1,0 +1,23 @@
+↑convertigo: 8.4.0.m006
+↓SecureFileDownloadDemo [core.Project]: 
+  comment: Convertigo NGX builder Project
+  contextTimeout: 59
+  corsOrigin: http://localhost:43726
+  httpSessionTimeout: 60
+  version: 8.4.0.1
+  ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
+  ↓DemoLogin [sequences.GenericSequence]: 🗏 sequences/DemoLogin.yaml
+  ↓DemoLogout [sequences.GenericSequence]: 🗏 sequences/DemoLogout.yaml
+  ↓DemoSessionStatus [sequences.GenericSequence]: 🗏 sequences/DemoSessionStatus.yaml
+  ↓GetSecuredFile [sequences.GenericSequence]: 🗏 sequences/GetSecuredFile.yaml
+  ↓InstallDemoResources [sequences.GenericSequence]: 🗏 sequences/InstallDemoResources.yaml
+  ↓project1 [references.ProjectSchemaReference]: 
+    projectName: mobilebuilder_tpl_8_4_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_4_0_ngx.zip
+  ↓Application [core.MobileApplication]: 
+    comment: Describes the mobile application global properties
+    splashRemoveMode: beforeUpdate
+    ↓Android [mobileplatforms.Android]: 
+      comment: Android platform
+    ↓iOS [mobileplatforms.IOs]: 
+      comment: iOS platform
+    ↓NgxApp [ngx.components.ApplicationComponent]: 🗏 mobileNgxApp.yaml

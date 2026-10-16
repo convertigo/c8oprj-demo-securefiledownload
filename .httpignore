@@ -1,0 +1,2 @@
+# Files served only through GetSecuredFile (.bin)
+/secured/

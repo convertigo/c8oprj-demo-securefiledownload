@@ -1,0 +1,42 @@
+accessibility: Hidden
+authenticatedContextRequired: true
+comment: Sert un fichier du répertoire secured uniquement après vérification du contexte authentifié.
+↓ResolveSecuredFile [steps.SimpleStep-1792149226113]: 
+  comment: Résout le fichier depuis context.getProjectDirectory() et vérifie qu’il reste directement dans secured/.
+  expression: |
+    'var requestedFile = String(file || '''');
+    if (!/^[A-Za-z0-9][A-Za-z0-9_.-]*$/.test(requestedFile) || requestedFile.indexOf(''..'') !== -1) {
+      throw new Error(''Invalid file name'');
+    }
+    
+    var securedDirectory = new java.io.File(context.getProjectDirectory(), ''secured'').getCanonicalFile();
+    var requestedPath = new java.io.File(securedDirectory, requestedFile).getCanonicalFile();
+    if (!requestedPath.getParentFile().equals(securedDirectory) || !requestedPath.isFile()) {
+      throw new Error(''Requested file not found'');
+    }
+    
+    var securedFilePath = requestedPath.getPath();
+    var securedFileName = requestedPath.getName();'
+↓Attachment [steps.XMLElementStep-1792149226137]: 
+  comment: Décrit le binaire que le moteur doit transmettre pour l’appel .bin.
+  nodeName: attachment
+  ↓AttachmentType [steps.AttributeStep-1792149244230]: 
+    comment: Marque la réponse comme pièce jointe binaire.
+    expression: '''attachment'''
+    nodeName: type
+  ↓AttachmentName [steps.AttributeStep-1792149244256]: 
+    comment: Nom de fichier transmis au navigateur.
+    expression: securedFileName
+    nodeName: name
+  ↓AttachmentLocalUrl [steps.AttributeStep-1792149244278]: 
+    comment: Chemin absolu du fichier validé dans secured/.
+    expression: securedFilePath
+    nodeName: local-url
+  ↓AttachmentContentType [steps.AttributeStep-1792149244301]: 
+    comment: Type MIME générique du téléchargement.
+    expression: '''application/octet-stream'''
+    nodeName: content-type
+↓file [variables.RequestableVariable-1792149226100]: 
+  comment: Le nom est validé par ResolveSecuredFile avant toute lecture.
+  description: Nom du fichier à télécharger depuis secured/.
+  required: true

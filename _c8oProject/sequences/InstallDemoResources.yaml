@@ -1,0 +1,81 @@
+accessibility: Private
+comment: 'Initialise exclusivement les ressources statiques de la démonstration : .httpignore, secured/ et secure-demo.txt.'
+↓WriteSecuredDemoResources [steps.SimpleStep-1792149435488]: 
+  comment: Crée exclusivement les ressources fixes de démonstration (.httpignore, fichier protégé et page de test), sans accepter de chemin ni de contenu depuis le client.
+  expression: |
+    'var projectDirectory = new java.io.File(com.twinsoft.convertigo.engine.Engine.projectDir(context.projectName)).getCanonicalFile();
+    var ignoreFile = new java.io.File(projectDirectory, ''.httpignore'').getCanonicalFile();
+    var securedDirectory = new java.io.File(projectDirectory, ''secured'').getCanonicalFile();
+    var indexFile = new java.io.File(projectDirectory, ''index.html'').getCanonicalFile();
+    if (!ignoreFile.getParentFile().equals(projectDirectory) || !securedDirectory.getParentFile().equals(projectDirectory) || !indexFile.getParentFile().equals(projectDirectory)) {
+      throw new java.lang.IllegalStateException(''Unexpected project resource path'');
+    }
+    if (!securedDirectory.exists() && !securedDirectory.mkdirs()) {
+      throw new java.io.IOException(''Unable to create secured directory'');
+    }
+    var ignoreWriter = new java.io.FileWriter(ignoreFile, false);
+    try {
+      ignoreWriter.write(''# Files served only through GetSecuredFile (.bin)\n/secured/\n'');
+    } finally {
+      ignoreWriter.close();
+    }
+    var sampleFile = new java.io.File(securedDirectory, ''secure-demo.txt'').getCanonicalFile();
+    if (!sampleFile.getParentFile().equals(securedDirectory)) {
+      throw new java.lang.IllegalStateException(''Unexpected demo file path'');
+    }
+    var sampleWriter = new java.io.FileWriter(sampleFile, false);
+    try {
+      sampleWriter.write(''This file is available only through the authenticated GetSecuredFile .bin sequence.\n'');
+    } finally {
+      sampleWriter.close();
+    }
+    var indexHtml = [
+      ''<!doctype html>'',
+      ''<html lang="fr">'',
+      ''<head>'',
+      ''  <meta charset="utf-8">'',
+      ''  <meta name="viewport" content="width=device-width, initial-scale=1">'',
+      ''  <title>SecureFileDownloadDemo</title>'',
+      ''  <style>body{font-family:system-ui,sans-serif;max-width:48rem;margin:3rem auto;padding:0 1rem;line-height:1.5}button,input{font:inherit;padding:.45rem}.warning{background:#fff3cd;border-left:4px solid #856404;padding:1rem}.status{min-height:1.5rem;font-weight:600}a{color:#0645ad}</style>'',
+      ''</head>'',
+      ''<body>'',
+      ''  <h1>SecureFileDownloadDemo</h1>'',
+      ''  <p class="warning"><strong>Démonstration uniquement.</strong> La connexion accepte un identifiant sans mot de passe, conformément au scénario de test ; ne pas reproduire ce mécanisme en production.</p>'',
+      ''  <p>Le fichier <code>secured/secure-demo.txt</code> est exclu de la publication HTTP directe par <code>.httpignore</code>.</p>'',
+      ''  <p><a href="./secured/secure-demo.txt">Tester l’accès direct au fichier protégé</a> — résultat attendu : <strong>404</strong>.</p>'',
+      ''  <label for="user">Identifiant de démonstration</label>'',
+      ''  <input id="user" value="demo-user" autocomplete="username">'',
+      ''  <button type="button" id="login">Se connecter</button>'',
+      ''  <button type="button" id="logout">Se déconnecter</button>'',
+      ''  <p><a id="download" href="./.bin?__sequence=GetSecuredFile&file=secure-demo.txt">Télécharger le fichier protégé (.bin)</a> — résultat attendu : refusé sans session, puis téléchargement après connexion.</p>'',
+      ''  <p class="status" id="status" role="status"></p>'',
+      ''  <script>'',
+      ''    const status = document.getElementById("status");'',
+      ''    async function callSequence(url) {'',
+      ''      const response = await fetch(url, { credentials: "same-origin" });'',
+      ''      if (!response.ok) throw new Error("HTTP " + response.status);'',
+      ''    }'',
+      ''    document.getElementById("login").addEventListener("click", async () => {'',
+      ''      const user = document.getElementById("user").value.trim();'',
+      ''      if (!user) { status.textContent = "Saisissez un identifiant."; return; }'',
+      ''      try {'',
+      ''        await callSequence("./.json?__sequence=DemoLogin&user=" + encodeURIComponent(user));'',
+      ''        status.textContent = "Session de démonstration ouverte pour " + user + ".";'',
+      ''      } catch (error) { status.textContent = "Connexion échouée : " + error.message; }'',
+      ''    });'',
+      ''    document.getElementById("logout").addEventListener("click", async () => {'',
+      ''      try {'',
+      ''        await callSequence("./.json?__sequence=DemoLogout");'',
+      ''        status.textContent = "Session de démonstration fermée.";'',
+      ''      } catch (error) { status.textContent = "Déconnexion échouée : " + error.message; }'',
+      ''    });'',
+      ''  </script>'',
+      ''</body>'',
+      ''</html>''
+    ].join(''\n'');
+    var indexWriter = new java.io.FileWriter(indexFile, false);
+    try {
+      indexWriter.write(indexHtml);
+    } finally {
+      indexWriter.close();
+    }'

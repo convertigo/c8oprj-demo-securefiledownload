@@ -1,0 +1,14 @@
+accessibility: Hidden
+comment: 'DÉMONSTRATION UNIQUEMENT : authentifie le nom fourni sans mot de passe. À ne jamais utiliser en production.'
+↓SetDemoAuthenticatedUser [steps.SetAuthenticatedUserStep-1792152904628]: 
+  comment: 'DÉMONSTRATION UNIQUEMENT : place user dans la session comme utilisateur authentifié.'
+  userid: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: JS
+        - →→: user
+↓user [variables.RequestableVariable-1792152904605]: 
+  comment: 'Aucun mot de passe : démonstration pédagogique uniquement.'
+  description: Identifiant libre de démonstration.
+  required: true
